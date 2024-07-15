@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Engine</title>
+<script>
+    function search() {
+        var searchQuery = document.getElementById('searchQuery').value.toLowerCase();
+        var searchResult = '';
+
+        switch(searchQuery) {
+            case 'google':
+                searchResult = <a href="index.html" target="index.html">knot of love</a>;
+                break;
+            case 'bing':
+                searchResult = 'https://www.bing.com';
+                break;
+            case 'yahoo':
+                searchResult = 'https://www.yahoo.com';
+                break;
+            default:
+                searchResult = 'https://www.example.com';
+                break;
+        }
+
+        // Redirect to the search result URL
+        window.location.href = searchResult;
+    }
+</script>
+</head>
+<body>
+    <h2>Search Engine</h2>
+    <p>Enter your search query:</p>
+    <input type="text" id="searchQuery">
+    <button onclick="search()">Search</button>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Matchmaker</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #filters {
+            margin-bottom: 20px;
+        }
+
+        #filters h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        #filters div {
+            margin-bottom: 10px;
+        }
+
+        #filters label {
+            margin-right: 10px;
+        }
+
+        #shoes {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .shoe-item {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .shoe-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .shoe-item p {
+            margin: 0;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shoe Matchmaker</h1>
+        <p>Find your perfect pair!</p>
+    </header>
+    <main>
+        <section id="filters">
+            <h2>Filters</h2>
+            <div>
+                <label for="brandFilter">Brand:</label>
+                <select id="brandFilter">
+                    <option value="">Any</option>
+                    <option value="Nike">Nike</option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="Puma">Puma</option>
+                </select>
+            </div>
+            <div>
+                <label for="sizeFilter">Size:</label>
+                <select id="sizeFilter">
+                    <option value="">Any</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div>
+                <label for="typeFilter">Type:</label>
+                <select id="typeFilter">
+                    <option value="">Any</option>
+                    <option value="Sneakers">Sneakers</option>
+                    <option value="Boots">Boots</option>
+                    <option value="Sandals">Sandals</option>
+                </select>
+            </div>
+            <button onclick="filterShoes()">Apply Filters</button>
+        </section>
+        
+        <section id="shoeList">
+            <h2>Matching Shoes</h2>
+            <ul id="shoes"></ul>
+        </section>
+        
+        <section id="addShoe">
+            <h2>Add Your Shoe</h2>
+            <form id="addShoeForm">
+                <div>
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required>
+                </div>
+                <div>
+                    <label for="size">Size:</label>
+                    <input type="number" id="size" name="size" required>
+                </div>
+                <div>
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" required>
+                </div>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <button type="submit">Add Shoe</button>
+            </form>
+        </section>
+        
+    </main>
+
+    <script>
+        // Initial shoes array with predefined data
+        let shoes = [
+            { brand: 'Nike', size: 7, type: 'Sneakers', name: 'Nike Air Max' },
+            { brand: 'Adidas', size: 8, type: 'Sneakers', name: 'Adidas Ultraboost' },
+            { brand: 'Puma', size: 9, type: 'Boots', name: 'Puma Winter Boots' },
+            { brand: 'Nike', size: 10, type: 'Sandals', name: 'Nike Comfort Sandals' },
+            { brand: 'Adidas', size: 7, type: 'Boots', name: 'Adidas Hiking Boots' },
+            { brand: 'Reebok', size: 8, type: 'Sneakers', name: 'Reebok Classic' },
+            { brand: 'New Balance', size: 9, type: 'Sneakers', name: 'New Balance 574' },
+            { brand: 'Under Armour', size: 10, type: 'Running Shoes', name: 'Under Armour Charged Bandit' },
+            { brand: 'Vans', size: 7, type: 'Skate Shoes', name: 'Vans Old Skool' },
+            { brand: 'Converse', size: 8, type: 'Casual Shoes', name: 'Converse Chuck Taylor All Star' },
+            { brand: 'Skechers', size: 9, type: 'Walking Shoes', name: 'Skechers GOwalk' },
+            { brand: 'Brooks', size: 10, type: 'Running Shoes', name: 'Brooks Ghost' },
+            { brand: 'Timberland', size: 7, type: 'Boots', name: 'Timberland 6-Inch Premium' },
+            { brand: 'Merrell', size: 8, type: 'Hiking Shoes', name: 'Merrell Moab 2' },
+            { brand: 'Ecco', size: 9, type: 'Dress Shoes', name: 'Ecco Helsinki' },
+            { brand: 'Clarks', size: 10, type: 'Casual Shoes', name: 'Clarks Desert Boot' }
+        ];
+
+        function filterShoes() {
+            const brandFilter = document.getElementById('brandFilter').value;
+            const sizeFilter = parseInt(document.getElementById('sizeFilter').value);
+            const typeFilter = document.getElementById('typeFilter').value;
+
+            // Apply filters to all shoes, including user-added shoes
+            const filteredShoes = shoes.filter(shoe =>
+                (brandFilter === '' || shoe.brand === brandFilter) &&
+                (isNaN(sizeFilter) || shoe.size === sizeFilter) &&
+                (typeFilter === '' || shoe.type === typeFilter)
+            );
+
+            displayShoes(filteredShoes);
+        }
+
+        function displayShoes(filteredShoes) {
+            const shoeList = document.getElementById('shoes');
+            shoeList.innerHTML = '';
+
+            filteredShoes.forEach(shoe => {
+                const li = document.createElement('li');
+                li.classList.add('shoe-item');
+                li.innerHTML = `
+                    <h3>${shoe.name}</h3>
+                    <p><strong>Brand:</strong> ${shoe.brand}</p>
+                    <p><strong>Size:</strong> ${shoe.size}</p>
+                    <p><strong>Type:</strong> ${shoe.type}</p>
+                `;
+                shoeList.appendChild(li);
+            });
+
+            if (filteredShoes.length === 0) {
+                shoeList.innerHTML = '<li>No matching shoes found.</li>';
+            }
+        }
+
+        // Initial display of all shoes
+        displayShoes(shoes);
+
+        // Event listener for form submission to add a new shoe
+        document.getElementById('addShoeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form values
+            const brand = document.getElementById('brand').value.trim();
+            const size = parseInt(document.getElementById('size').value.trim());
+            const type = document.getElementById('type').value.trim();
+            const name = document.getElementById('name').value.trim();
+
+            // Validate form values (optional)
+            if (brand === '' || isNaN(size) || type === '' || name === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            // Add new shoe to the shoes array
+            const newShoe = { brand, size, type, name };
+            shoes.push(newShoe);
+
+            // Update the filters and display
+            filterShoes();
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

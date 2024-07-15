@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding-----Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="chat.html" href="chat.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <style>
+    /* Styles for login button */
+.login-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styles for login popup */
+.login-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Login popup content */
+.login-popup-content {
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    
+    /* Styles for chat popup */
+    .chat-popup {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 5px;
+      z-index: 1000;
+    }
+    
+    /* Chat popup content */
+    .chat-popup-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .chat-popup-header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .close-btn {
+      cursor: pointer;
+    }
+    
+    .chat-popup-body {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .chat-popup-footer {
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .chat-popup-footer input[type="text"] {
+      flex-grow: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-right: 10px;
+    }
+    
+    .chat-popup-footer button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    /* Header Styles */
+.head {
+    background-image: linear-gradient(purple );
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.head .logo {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.head .navbar {
+    display: flex;
+    align-items: center;
+}
+
+.head .navbar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.head .navbar a.active,
+.head .navbar a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    background-color: inherit;
+    color: hsl(187, 80%, 70%);
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: hsl(0, 73%, 4%);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#menu-bar {
+    display: none;
+    cursor: pointer;
+}
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/6 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: hsl(0, 88%, 87%);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 100px) {
+  .text {font-size: 11px}
+}
+ </style>
+</head>
+
+    <body>
+        
+        <header class="head">
+            <a href="#" class="logo"><i class="fas fa-heart"></i>&nbsp;Knot<span>of</span>Love&nbsp;<i class="fas fa-heart"></i></a>
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Service <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Catering</a>
+                        <a href="#">Bridal Makeup</a>
+                        <a href="#">Wedding Flowers</a>
+                        <a href="#">Wedding Cake</a>
+                        <a href="#">Wedding Jewellery</a>
+                        <a href="#">Wedding Entertainment Programm</a>
+                        <a href="#">Wedding Invitation</a>
+                        <a href="#">Wedding Photography & Videography</a>
+                        <a href="#">Wedding Dresses</a>
+                        <a href="#">Wedding Mehendi</a>
+                        <a href="#">Bridal Grooming</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Vendors <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Vendor 1</a>
+                        <a href="#">Vendor 2</a>
+                        <a href="#">Vendor 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Venue <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="a17.html" target="a17.html">Banagaolorer</a>
+                        <a href="a16.html" target="a16.html">Delhi</a>
+                        <a href="a18.html" target="a18.html">Goa</a>
+                        <a href="#">Kochi</a>
+                        <a href="a11.html" target="a11.html">Mumbai</a>
+                        <a href="a12.html" target="a12.html">Udaipur</a>
+                        <a href="a19.html" target="a19.html">Rishikesh</a>
+                        <a href="#">Manali</a>
+                        <a href="#">ahmadabad</a>
+                        <a href="#">Sri-Nagar</a>
+                        <a href="a13.html" target="a13.html">Chennai</a>
+                        <a href="#">Bhubaneswar</a>
+                        <a href="a15.html" target="a15.html">Rajastan</a>
+
+                        <a href="#">Munnar</a>
+                        <a href="#">Shilong</a>
+                        <a href="#">Goa</a>
+
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Invites <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="cardform.html" target="_blank">Card Design</a>
+                        <a href="E-invites.html" target="E-invites.html">E-invitation</a>
+                    </div>
+                </div>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div id="menu-bar"><i class="fas fa-bars"></i></div>
+        </header>
+        <button class="login-btn" onclick="toggleLogin()">Login</button>
+
+<!-- Login form popup -->
+
+    <!---------------------------Home--------------------->
+    <script>
+        function openCodeFile() {
+            var selectElement = document.getElementById('fileSelect');
+            var fileName = selectElement.value.toLowerCase();
+            var filePath = '';
+    
+            switch(fileName) {
+                case 'index':
+                    filePath = 'index.html';
+                    break;
+                case 'mumbai':
+                    filePath = 'mumbai.html';
+                    break;
+                case 'vendorform':
+                    filePath = 'vendorform.html';
+                    break;
+                default:
+                    alert('File not found!');
+                    return;
+            }
+    
+            // Open the file using the local server
+            window.open(filePath, '_blank');
+        }
+    </script>
+ 
+    <section class="home" id="home">
+       
+            <div class="search-box">
+                <h1>Your Wedding,Your Way</h1>
+                <p>Find the best wedding vendors with thousands of trusted reviews</p>
+                <select type="text" class="search-field">
+            <option disabled selected>Select vendor type</option>
+            <option value="Wedding Venues">Wedding Venues</option>
+            <option value="Family makeup">Family makeup</option>
+            <option value="bridal makeup">Bridal Makeup</option>
+            <option value="Groom Wear">Groom Wear</option>
+            <option value="Wedding Decoration">Wedding decoration</option>
+        </select>
+               
+            <select id="fileSelect">
+                <option value="index">index.html</option>
+                <option value="mumbai">script.js</option>
+                <option value="vendorform">styles.css</option>
+                <option disabled selected>City</option>
+            <option value="Anand">Bhubaneswar</option>
+            <option value="Ahemdabad">Ahemdabad</option>
+            <option value ="mumbai">mumbai</option> 
+            <option value="Baroda">Bangaluru</option>
+            <option value="Goa">Goa</option>
+            </select>
+            <button onclick="openCodeFile()">Search</button>
+       
+               
+           
+            
+     
+    </section><br><br>
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 6</div>
+          <img src="https://image.wedmegood.com/resized/450X/uploads/member/590023/1560834482_Screenshot_4.png?crop=90,0,1298,730" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 6</div>
+          <img src="https://image.wedmegood.com/resized/450X/uploads/member/1269357/1711013215_image2974.jpg?crop=11,146,2026,1140" style="width:100%">
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 6</div>
+          <img src="https://image.wedmegood.com/resized/450X/uploads/member/422655/1535602529_IMG_7238.JPG?crop=7,91,987,555" style="width:100%">
+          <div class="text">Caption Three</div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">4/ 6</div>
+          <img src="https://image.wedmegood.com/resized/450X/uploads/project/87112/1708418596_RP_26_.jpg?crop=212,242,1618,910" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 6</div>
+          <img src="https://image.wedmegood.com/resized/450X/uploads/member/939905/1630597745_IMG_20210728_093249.jpg?crop=266,14,1607,904" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">6 / 6</div>
+          <img src="https://image.wedmegood.com/resized/450X/uploads/member/24603963/1717159539_2023_09_01__1_.jpg?crop=6,116,1012,569" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+        </div>
+    <!------------------------services-------------------->
+    
+    <section class="service" id="service">
+        <div class="title">
+
+            <h1><span>S</span>ervice</h1>
+        </div>
+        <div class="services-row">
+            <div class="services-col">
+                <i class="fas fa-book-open"></i>
+                <h2>invitation</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-camera"></i>
+                <h2>Photography & Video</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-brush"></i>
+                <h2>Beauty & Makeup</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fab fa-pagelines"></i>
+                <h2>Wedding flowers</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-birthday-cake"></i>
+                <h2>wedding cake</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-music"></i>
+                <h2>music band</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-utensils"></i>
+                <h2>Catering</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-ring"></i>
+                <h2>Jewellery</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+        </div>
+    </section>
+    <!-----------------------------vendor------------------->
+    <section class="vendor" id="vendor">
+        <div class="title">
+            <h1><span>F</span>eatured <span>V</span>endor</h1>
+        </div>
+        <div class="vendor-list">
+            <div class="vendor-row">
+                <div class="rate">4.5&nbsp;<i class="fa fa-star" aria-hidden="true"></i></div>
+                <img src="im1.jpg" alt="img">
+                <h2>Beauty tales by komal rai</h2>
+                <p>Bridal Makeup</p>
+                <h3>Rs.20,000 onwards</h3>
+            </div>
+            <div class="vendor-row">
+                <div class="rate">4.2&nbsp;<i class="fa fa-star" aria-hidden="true"></i></div>
+                <img src="im2.jpg" alt="img">
+                <h2>Flinters Management</h2>
+                <p>Wedding Planner</p>
+                <h3>Rs.2.5-4 Lakh</h3>
+            </div>
+            <div class="vendor-row">
+                <div class="rate">5.0&nbsp;<i class="fa fa-star" aria-hidden="true"></i></div>
+                <img src="im3.jpg" alt="img">
+                <h2>Wedding Mela</h2>
+                <p>Wedding Decorators</p>
+                <h3>Rs.80,000-30,00,000</h3>
+            </div>
+            <div class="vendor-row">
+                <div class="rate">4.1&nbsp;<i class="fa fa-star" aria-hidden="true"></i></div>
+                <img src="im4.jpg" alt="img">
+                <h2>SeventhHeaven Wedding Company</h2>
+                <p>Wedding Decorators-Rental Only</p>
+                <h3>Rs.80,000 Onwards</h3>
+            </div>
+            <div class="vendor-row">
+                <div class="rate">4.3&nbsp;<i class="fa fa-star" aria-hidden="true"></i></div>
+                <img src="im5.jpg" alt="img">
+                <h2>Wedding Mela</h2>
+                <p>Wedding Decorators</p>
+                <h3>Rs.80,000-30,00,000</h3>
+            </div>
+            <div class="vendor-row">
+                <div class="rate">4.0&nbsp;<i class="fa fa-star" aria-hidden="true"></i></div>
+                <img src="im6.jpg" alt="img">
+                <h2>Wedding Mela</h2>
+                <p>Wedding Decorators</p>
+                <h3>Rs.1.8 Lakh</h3>
+            </div>
+        </div>
+    </section>
+    <!----------------------------venue Section-------------->
+    <section class="venue" id="venue">
+        <div class="title">
+            <h1><span>V</span>enues</h1>
+        </div>
+        <div class="venue-list">
+            <div class="venue-box">
+                <img src="venue-5.jpg" alt="img">
+                <div class="venue-info">
+                    <h2>Goa</h2>
+                    <p>Azaya Beach Resort, Goa</p>
+                    <button class="btn">More Info</button>
+                </div>
+            </div>
+            <div class="venue-box">
+                <img src="venue-2.jpg" alt="img">
+                <div class="venue-info">
+                    <h2>Jaipur</h2>
+                    <p>The Raj Palace</p>
+                    <button class="btn">More Info</button>
+                </div>
+            </div>
+            <div class="venue-box">
+                <img src="venue-3.jpg" alt="img">
+                <div class="venue-info">
+                    <h2>Udaipur</h2>
+                    <p>Taj Aravalli Resort and Spa</p>
+                    <button class="btn">More Info</button>
+                </div>
+            </div>
+            <div class="venue-box">
+                <img src="venue-4.jpg" alt="img">
+                <div class="venue-info">
+                    <h2>Thailand</h2>
+                    <p>Prince Palace Hotel</p>
+                    <button class="btn">More Info</button>
+                </div>
+            </div>
+            <div class="venue-box">
+                <img src="venue-5.jpg" alt="img">
+                <div class="venue-info">
+                    <a href="mumbai.html" target="mumbai.html">Mumbai</a>
+                    <p>Grand Banquet, Chembur</p>
+                    <button class="btn"> <a href="mumbai.html" target="mumbai.html">Mumbai</a></button>
+                </div>
+            </div>
+            <div class="venue-box">
+                <img src="venue-6.jpg" alt="img">
+                <div class="venue-info">
+                    <h2>Delhi</h2>
+                    <p>The Deltin,Delhi</p>
+                    <button class="btn"><a href="a14.html" target="a14.html" alt="more info">more info</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!------------------E-invitation------------------>
+    <section class="invite" id="invite">
+        <div class="title">
+            <h1>Card<span>Design</span></h1>
+            <p>Choose the best card Design.</p>
+        </div>
+        <div class="invitation-row">
+            <div class="invitation-box">
+                <img src="card-1.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-2.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-3.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-4.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-5.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-6.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-7.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-8.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-9.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-10.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-11.jpg" alt="">
+            </div>
+            <div class="invitation-box">
+                <img src="card-12.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    
+    <!--------------------------------------------footer section--------------------------->
+    <footer id="contact">
+        <div class="container">
+            <div class="f-container">
+                <h2>WedMeGood - Your Personal Wedding Planner</h2><br>
+                <p>Plan your wedding with Us WedMeGood is an Indian Wedding Planning Website </p>
+                <div>
+                    <button class="btn"><a href="vendorform.html" target="vendorform.html">Register as a Vendor </a></button>
+                </div>
+                <div class="social">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest"></i>
+                </div>
+            </div>
+            <div class="f-container">
+                <h2>Our Location</h2>
+                <a href="#"><i class="fas fa-angle-right"></i>Anand</a>
+                <a href="#"><i class="fas fa-angle-right"></i>Vadodara</a>
+                <a href="#"><i class="fas fa-angle-right"></i>Mumbai</a>
+                <a href="#" ><i class=" fas fa-angle-right "></i>Ahemdabad</a>
+                    <a href="# "><i class="fas fa-angle-right "></i>Surat</a>
+                </div>
+                
+                <div class="f-container ">
+                    <h2>Our Newsletter</h2>
+                    <p>Subscribe for latest updates</p>
+                    <input type="text " placeholder="Enter Your Email ">
+                    <button class="btn ">Subscribe</button>
+                    </div>
+            </div>
+            <div class="login-popup" id="login-popup">
+                <div class="login-popup-content">
+                  <span class="close-btn" onclick="toggleLogin()">&times;</span>
+                  <h2>Login</h2>
+                  <form action="#" method="post">
+                    <div class="input-group">
+                      <label for="username">Username</label>
+                      <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="input-group">
+                      <label for="password">Password</label>
+                      <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                  </form>
+                </div>
+              </div>
+              
+            <div class="chat-button" onclick="toggleChat()">
+                Chat with us
+              </div>
+              
+              <!-- Chat popup box -->
+              <div class="chat-popup" id="chat-popup">
+                <div class="chat-popup-content">
+                  <div class="chat-popup-header">
+                    <span class="close-btn" onclick="toggleChat()">&times;</span>
+                    <h3>Chat with us</h3>
+                  </div>
+                  <div class="chat-popup-body">
+                    <!-- Your chat content goes here -->
+                    <p>Welcome to our chat!</p>
+                  </div>
+                  <div class="chat-popup-footer">
+                    <!-- Chat input form -->
+                    <input type="text" placeholder="Type your message...">
+                    <button>Send</button>
+                  </div>
+                </div>
+              </div>
+              
+              
+        </footer>
+        <div class="copyright ">
+            <p>Copyright ©2022 All Rights Reserved | Knowledge Place KP</p>
+        </div>
+</body>
+<script>
+    // Toggle chat popup visibility
+                  function toggleChat() {
+                    var chatPopup = document.getElementById("chat-popup");
+                    chatPopup.style.display = chatPopup.style.display === 'none' ? 'block' : 'none';
+                  }
+     let menu = document.querySelector('#menu-bar');
+    let head = document.querySelector('.head .navbar');
+
+    menu.onclick = () => {
+        head.classList.toggle('active');
+    };
+
+    window.onscroll = () => {
+        head.classList.remove('active');
+        if (window.scrollY > 60) {
+            document.querySelector('#menu-bar').classList.add('active');
+        } else {
+            document.querySelector('#menu-bar').classList.remove('active');
+        }
+    };
+
+    let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    
+    // Hide all slides
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    
+    // Reset all dot classes
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    
+    // Increment slideIndex and reset if greater than number of slides
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }    
+    
+    // Display the current slide and activate the corresponding dot
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    
+    // Change slide every 4 seconds
+    setTimeout(showSlides, 4000);
+}
+function toggleLogin() {
+  var loginPopup = document.getElementById("login-popup");
+  loginPopup.style.display = loginPopup.style.display === 'none' ? 'block' : 'none';
+}
+</script>    
+</html>

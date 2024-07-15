@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding-----Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <style>
+    /* Header Styles */
+.head {
+    background-image: linear-gradient(purple );
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.head .logo {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.head .navbar {
+    display: flex;
+    align-items: center;
+}
+
+.head .navbar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.head .navbar a.active,
+.head .navbar a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    background-color: inherit;
+    color: hsl(187, 80%, 70%);
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: hsl(0, 73%, 4%);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#menu-bar {
+    display: none;
+    cursor: pointer;
+}
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/6 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: hsl(0, 88%, 87%);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 100px) {
+  .text {font-size: 11px}
+}
+ </style>
+</head>
+
+    <body>
+        
+        <header class="head">
+            <a href="#" class="logo"><i class="fas fa-heart"></i>&nbsp;Knot<span>of</span>Love&nbsp;<i class="fas fa-heart"></i></a>
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Service <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Catering</a>
+                        <a href="#">Bridal Makeup</a>
+                        <a href="#">Wedding Flowers</a>
+                        <a href="#">Wedding Cake</a>
+                        <a href="#">Wedding Jewellery</a>
+                        <a href="#">Wedding Entertainment Programm</a>
+                        <a href="#">Wedding Invitation</a>
+                        <a href="#">Wedding Photography & Videography</a>
+                        <a href="#">Wedding Dresses</a>
+                        <a href="#">Wedding Mehendi</a>
+                        <a href="#">Bridal Grooming</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Vendors <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Vendor 1</a>
+                        <a href="#">Vendor 2</a>
+                        <a href="#">Vendor 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Venue <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="a17.html" target="a17.html">Banagaolorer</a>
+                        <a href="a16.html" target="a16.html">Delhi</a>
+                        <a href="a18.html" target="a18.html">Goa</a>
+                        <a href="#">Kochi</a>
+                        <a href="a11.html" target="a11.html">Mumbai</a>
+                        <a href="a12.html" target="a12.html">Udaipur</a>
+                        <a href="a19.html" target="a19.html">Rishikesh</a>
+                        <a href="#">Manali</a>
+                        <a href="#">ahmadabad</a>
+                        <a href="#">Sri-Nagar</a>
+                        <a href="a13.html" target="a13.html">Chennai</a>
+                        <a href="#">Bhubaneswar</a>
+                        <a href="a15.html" target="a15.html">Rajastan</a>
+
+                        <a href="#">Munnar</a>
+                        <a href="#">Shilong</a>
+                        <a href="#">Goa</a>
+
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Invites <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="cardform.html" target="_blank">Card Design</a>
+                        <a href="E-invites.html" target="E-invites.html">E-invitation</a>
+                    </div>
+                </div>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div id="menu-bar"><i class="fas fa-bars"></i></div>
+        </header>

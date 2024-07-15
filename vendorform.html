@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Registration Form</title>
+<style>
+    h2{
+        text-align: center;
+        text-decoration: underline;
+        font-size: x-large;
+        font-style: italic;
+    }
+    /* Basic styling for the form */
+    body {
+        font-family: Arial, sans-serif;
+        background-image: linear-gradient(purple ,white);
+
+        padding: 20px;
+        
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-group input[type=text],
+    .form-group input[type=email],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .form-group textarea {
+        height: 100px;
+    }
+    .form-group input[type=checkbox] {
+        margin-right: 10px;
+    }
+    .submit-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Vendor Registration Form</h2>
+    <form action="index.php" method="POST">
+        <div class="form-group">
+            <label for="business_name">Business Name:</label>
+            <input type="text" id="business_name" name="business_name" required>
+        </div>
+        <div class="form-group">
+            <label for="contact_person">Contact Person:</label>
+            <input type="text" id="contact_person" name="contact_person" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+        </div>
+        <div class="form-group">
+            <label for="email_address">Email Address:</label>
+            <input type="email" id="email_address" name="email_address" required>
+        </div>
+        <div class="form-group">
+            <label for="website">Website:</label>
+            <input type="text" id="website" name="website">
+        </div>
+        <div class="form-group">
+            <label for="business_address">Business Address:</label>
+            <textarea id="business_address" name="business_address" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Type of Wedding Services Provided:</label>
+            <label for="service_venue_booking"></label>
+            <input type="checkbox" id="service_venue_booking" name="services[]" value="Venue Booking" > Venue Booking<br>
+           
+            <label for="service_catering"> </label>
+            <input type="checkbox" id="service_catering" name="services[]" value="Catering">Catering<br>
+            <input type="checkbox" id="service_photography" name="services[]" value="Photography">Photography<br>
+            
+            <input type="checkbox" id="service_videography" name="services[]" value="Videography">Videography<br>
+           
+            <input type="checkbox" id="service_wedding_planning" name="services[]" value="Wedding Planning">Wedding Planning<br>
+            
+            <input type="checkbox" id="service_decorations" name="services[]" value="Decorations">Decorations<br>
+           
+            <input type="checkbox" id="service_entertainment" name="services[]" value="Entertainment">Entertainment (DJ, live band, etc.)<br>
+            
+            <input type="checkbox" id="service_floral_arrangements" name="services[]" value="Floral Arrangements"> Floral Arrangements<br>
+            
+          
+            <input type="checkbox" id="service_invitations" name="services[]" value="Invitations and Stationery">Invitation& stationary<br>
+           
+            <input type="checkbox" id="service_hair_makeup" name="services[]" value="Hair and Makeup"> Hair and Makeup<br>
+            
+            <input type="checkbox" id="service_attire" name="services[]" value="Wedding Attire">Wedding Attire<br>
+           
+            <input type="checkbox" id="service_other" name="services[]" value="Other">(please specify)<br>
+            
+            <input type="text" id="other_service" name="other_service">
+        </div>
+        <div class="form-group">
+            <label for="experience">Briefly describe your experience in providing wedding services:</label>
+            <textarea id="experience" name="experience" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="references">Client References:</label>
+            <textarea id="references" name="references"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="additional_info">Additional Information:</label>
+            <textarea id="additional_info" name="additional_info"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="terms_conditions" name="terms_conditions" required>
+            <label for="terms_conditions"> I agree to the terms and conditions</label>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

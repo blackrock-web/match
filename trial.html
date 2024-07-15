@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Pages by Filter</title>
+<style>
+    /* Optional: Some basic styling for better presentation */
+    .file-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .file-list li {
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+    <h2>Select Pages by Filter</h2>
+    <p>Enter a filter term to select pages:</p>
+    <input type="text" id="filterInput" onkeyup="filterPages()">
+    <ul id="fileList" class="file-list">
+        <li><a href="index.html">index.html</a></li>
+        <li><a href="vendor.html">script.js</a></li>
+        <li><a href="http://127.0.0.1:5500/styles.css">styles.css</a></li>
+        <!-- Add more <li> items as needed -->
+    </ul>
+
+    <script>
+        function filterPages() {
+            // Declare variables
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('filterInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById('fileList');
+            li = ul.getElementsByTagName('li');
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName('a')[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+    <input type="text" id="searchQuery">
+    <button onclick="search()">Search</button>
+</body>
+</html>

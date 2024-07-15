@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Wedding Celebration</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12px;
+            line-height: 1.5;
+            text-align: justify;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 14px;
+        }
+        footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>City Wedding Celebration</h1>
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#venue">Venue</a> |
+        <a href="#accommodations">Accommodations</a> |
+        <a href="#travel">Travel Info</a> |
+        <a href="#rsvp">RSVP</a>
+    </nav>
+</header>
+
+<section id="about">
+    <h2>About the Wedding</h2>
+    <p>Welcome to our city wedding celebration! Join us for a joyous occasion as we unite in marriage.</p>
+    <p><strong>Date:</strong> [Date of Wedding]</p>
+    <p><strong>Time:</strong> [Time of Wedding]</p>
+</section>
+
+<section id="venue">
+    <h2>Wedding Venue</h2>
+    <p><strong>Name:</strong> [Venue Name]</p>
+    <p><strong>Address:</strong> [Venue Address]</p>
+    <p>[Brief description of the venue.]</p>
+</section>
+
+<section id="accommodations">
+    <h2>Accommodations</h2>
+    <p>For your convenience, we have listed some recommended hotels:</p>
+    <ul>
+        <li>[Hotel 1 Name] - [Hotel 1 Address]</li>
+        <li>[Hotel 2 Name] - [Hotel 2 Address]</li>
+        <li>[Hotel 3 Name] - [Hotel 3 Address]</li>
+    </ul>
+    <p>Please book your accommodations early to ensure availability.</p>
+</section>
+
+<section id="travel">
+    <h2>Travel Information</h2>
+    <p><strong>Nearest Airport:</strong> [Airport Name]</p>
+    <p><strong>Local Transportation:</strong> [Details on local transportation options.]</p>
+</section>
+
+<footer>
+    <h2>Contact & RSVP</h2>
+    <form action="/submit-rsvp" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="rsvp">Will you attend?</label>
+        <select id="rsvp" name="rsvp" required>
+            <option value="Yes">Yes, I will be there!</option>
+            <option value="No">No, I can't make it.</option>
+            <option value="Maybe">Maybe, I'm not sure yet.</option>
+        </select><br><br>
+        
+        <label for="message">Message (Optional):</label>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+        
+        <input type="submit" value="Submit RSVP">
+    </form>
+</footer>
+
+</body>
+</html>

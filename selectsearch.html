@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Code File</title>
+<script>
+    function openCodeFile() {
+        var selectElement = document.getElementById('fileSelect');
+        var fileName = selectElement.value.toLowerCase();
+        var filePath = '';
+
+        switch(fileName) {
+            case 'index':
+                filePath = 'index.html';
+                break;
+            case 'mumbai':
+                filePath = 'mumbai.html';
+                break;
+            case 'vendorform':
+                filePath = 'vendorform.html';
+                break;
+            default:
+                alert('File not found!');
+                return;
+        }
+
+        // Open the file using the local server
+        window.open(filePath, '_blank');
+    }
+</script>
+</head>
+<body>
+    <h2>Open Code File</h2>
+    <p>Select a file to open:</p>
+    <select id="fileSelect">
+        <option value="index">knot of love</option>
+        <option value="mumbai">mumbai</option>
+        <option value="vendorform">vendor form</option>
+    </select>
+    <button onclick="openCodeFile()">Open File</button>
+</body>
+</html>
